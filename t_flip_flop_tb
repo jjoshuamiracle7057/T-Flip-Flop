@@ -1,0 +1,72 @@
+`timescale 1ns / 1ps  // Set time unit to 1 nanosecond, precision to 1 picosecond
+
+module t_flip_flop_tb;
+
+    // 1. Declare signals to connect to the UUT (Unit Under Test)
+    reg t;
+    reg clk;
+    reg reset;
+    wire q;
+    wire q_bar;
+
+    // 2. Instantiate the T Flip-Flop (UUT)
+    t_flip_flop uut (
+        .t(t),
+        .clk(clk),
+        .reset(reset),
+        .q(q),
+        .q_bar(q_bar)
+    );
+
+    // 3. Clock Generation Logic
+    // This creates a clock with a 10ns period (100MHz frequency)
+    always begin
+        #5 clk = ~clk; 
+    end
+
+    // 4. Stimulus Process (The Test Sequence)
+    initial begin
+        // Initialize Inputs
+        clk = 0;
+        t = 0;
+        reset = 0;
+
+        // Apply Reset
+        $display("Applying Reset...");
+        reset = 1;
+        #10;
+        reset = 0;
+        
+        // Test Case 1: T=0 (Hold State)
+        $display("Testing Hold State (T=0)...");
+        t = 0;
+        #20; 
+
+        // Test Case 2: T=1 (Toggle State)
+        $display("Testing Toggle State (T=1)...");
+        t = 1;
+        #40; // Let it toggle for a few clock cycles
+
+        // Test Case 3: T=0 again (Hold the toggled state)
+        $display("Testing Hold State after toggle...");
+        t = 0;
+        #20;
+
+        // Test Case 4: Asynchronous Reset during operation
+        $display("Testing Asynchronous Reset...");
+        reset = 1;
+        #10;
+        reset = 0;
+
+        // Finish Simulation
+        $display("Simulation Complete.");
+        $finish;
+    end
+
+    // 5. Monitor the outputs in the console
+    initial begin
+        $monitor("Time=%0t | Reset=%b | T=%b | Q=%b | Q_bar=%b", 
+                 $time, reset, t, q, q_bar);
+    end
+
+endmodule
