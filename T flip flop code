@@ -1,0 +1,32 @@
+// T Flip-Flop Module
+// This module implements a T Flip-Flop with an active-high asynchronous reset.
+
+module t_flip_flop (
+    input wire t,      // Toggle input
+    input wire clk,    // Clock input
+    input wire reset,  // Asynchronous reset (High to reset)
+    output reg q,      // Output Q
+    output wire q_bar  // Complementary output Q_bar
+);
+
+    // Complementary output is always the inverse of Q
+    assign q_bar = ~q;
+
+    // Sequential logic triggered on the rising edge of the clock
+    // or the rising edge of the reset signal (Asynchronous)
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            // When reset is high, the output is forced to 0
+            q <= 1'b0;
+        end else begin
+            if (t) begin
+                // If T is 1, toggle the current state of Q
+                q <= ~q;
+            end else begin
+                // If T is 0, maintain the current state (Hold)
+                q <= q;
+            end
+        end
+    end
+
+endmodule
