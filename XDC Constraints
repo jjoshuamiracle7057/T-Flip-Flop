@@ -1,0 +1,15 @@
+## Clock signal
+set_property PACKAGE_PIN W5 [get_ports clk]							
+	set_property IOSTANDARD LVCMOS33 [get_ports clk]
+
+## T input (mapped to Switch 0)
+set_property PACKAGE_PIN V17 [get_ports t_in]					
+	set_property IOSTANDARD LVCMOS33 [get_ports t_in]
+
+## Reset input (mapped to Switch 1)
+set_property PACKAGE_PIN V16 [get_ports rst_n]					
+	set_property IOSTANDARD LVCMOS33 [get_ports rst_n]
+
+## Q Output (mapped to LED 0)
+set_property PACKAGE_PIN U16 [get_ports q_out]					
+	set_property IOSTANDARD LVCMOS33 [get_ports q_out]
