@@ -1,9 +1,9 @@
 # T-Flip-Flop
 The T Flip-Flop is a digital logic circuit used to store a single bit of data. It is a modification of the JK Flip-Flop, where the J and K inputs are tied together to create a single Toggle (T) input.
 
-The T (Toggle) Flip-Flop is a clocked sequential logic circuit that has a single data input ($T$). It is a specific case of the JK Flip-Flop where the $J$ and $K$ inputs are permanently connected. Its primary purpose is to "toggle" between two binary states ($0$ and $1$), making it the foundational component for digital counters and frequency dividers.
+The T (Toggle) Flip-Flop is a clocked sequential logic circuit that has a single data input (T). It is a specific case of the JK Flip-Flop where the J and K inputs are permanently connected. Its primary purpose is to "toggle" between two binary states (0 and 1), making it the foundational component for digital counters and frequency dividers.
 
-🧩 Logic & Truth TableThe T Flip-Flop operates based on the state of the $T$ input at the moment of a clock transition (usually the Rising Edge).
+🧩 Logic & Truth TableThe T Flip-Flop operates based on the state of the T input at the moment of a clock transition (usually the Rising Edge).
 
 T    Qt   Q(t+!)
 0    0      1
