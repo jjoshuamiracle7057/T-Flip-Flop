@@ -1,0 +1,6 @@
+Verilog Port,Hardware Component,typical FPGA Pin (Basys 3 Example)
+clk,System Clock (100MHz),W5
+t_in,Switch 0 (SW0),V17
+rst_n,Switch 1 (SW1),V16
+q_out,LED 0 (LD0),U16
+q_not,LED 1 (LD1),E19
